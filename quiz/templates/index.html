@@ -1,28 +1,16 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
+    <title>Home - Quiz App</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
-
 <body>
-    <h1>Quiz Question</h1>
-
-    <h3>{{ question }}</h3>
-
-    <form method="post">
-        {% csrf_token %}
-        <input type="radio" name="answervalue" value="{{ op1 }}" id="op1"> {{ op1 }}<br>
-        <input type="radio" name="answervalue" value="{{ op2 }}" id="op2"> {{ op2 }}<br>
-        <input type="radio" name="answervalue" value="{{ op3 }}" id="op3"> {{ op3 }}<br>
-        <input type="radio" name="answervalue" value="{{ op4 }}" id="op4"> {{ op4 }}<br>
-
-        <button type="submit" name="target" value="optionclick">Submit</button>
-    </form>
-
-    <h4>Current Score: {{ score }}</h4>
+    <div class="container">
+        <h1 class="title">Welcome to the Quiz App</h1>
+        <p class="description">Test your knowledge with our fun and interactive quiz.</p>
+        <a href="{% url 'quiz' %}" class="start-button">Start Quiz</a>
+    </div>
 </body>
-
 </html>

@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Quiz</h1>
+        <form method="post" class="quiz-form">
+            {% csrf_token %}
+            {% for question in questions %}
+                <fieldset class="question-set">
+                    <legend class="question">{{ question.question }}</legend>
+                    <div class="options">
+                        {% for option in question.options %}
+                            <label class="option-label">
+                                <input type="radio" name="question_{{ forloop.parentloop.counter }}" value="{{ option }}">
+                                {{ option }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                </fieldset>
+            {% endfor %}
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
